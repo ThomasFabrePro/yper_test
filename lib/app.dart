@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yper_test/screens/home_screen.dart';
 import 'package:yper_test/screens/splash_screen.dart';
-
-//nom de toutes les routes de l'application
-enum AppRoute { splash, login, home }
 
 GoRouter router() {
   return GoRouter(
-    initialLocation: '/${AppRoute.splash.name}',
+    initialLocation: '/${SplashScreen.routeName}',
     routes: [
       GoRoute(
-        path: '/${AppRoute.splash.name}',
+        path: '/${SplashScreen.routeName}',
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/${HomeScreen.routeName}',
+        builder: (context, state) => const HomeScreen(),
       ),
     ],
   );
