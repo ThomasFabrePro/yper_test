@@ -5,7 +5,8 @@ import 'package:yper_test/screens/splash_screen.dart';
 
 GoRouter router() {
   return GoRouter(
-    initialLocation: '/${SplashScreen.routeName}',
+    initialLocation: '/${HomeScreen.routeName}',
+    // initialLocation: '/${SplashScreen.routeName}',
     routes: [
       GoRoute(
         path: '/${SplashScreen.routeName}',
