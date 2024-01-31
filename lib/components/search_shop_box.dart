@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:yper_test/constants.dart';
 import 'package:yper_test/theme/app_theme.dart';
+import 'package:yper_test/providers/location_provider.dart';
+import 'package:provider/provider.dart';
 
 class SearchShopBox extends StatelessWidget {
   const SearchShopBox({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Consumer<LocationProvider>(
+      builder: (context, locationProvider, child) {
+        return Container(
       height: 225,
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
@@ -28,7 +32,9 @@ class SearchShopBox extends StatelessWidget {
           const SizedBox(height: 10),
           Form(
             child: TextFormField(
-              onChanged: (value) {},
+              onChanged: (value) {
+                locationProvider.placeAutoComplete(value);
+              },
               textInputAction: TextInputAction.search,
               style: const TextStyle(
                   color: Colors.white,
@@ -57,5 +63,8 @@ class SearchShopBox extends StatelessWidget {
         ],
       ),
     );
+      },
+    );
+
   }
 }
