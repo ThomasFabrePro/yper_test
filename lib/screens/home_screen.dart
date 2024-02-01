@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       body: ChangeNotifierProvider(
         create: (context) => LocationProvider(),
         child: Builder(

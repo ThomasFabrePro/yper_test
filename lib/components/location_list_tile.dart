@@ -6,7 +6,7 @@ class LocationListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 5,
+        itemCount: 12,
         itemBuilder: (context, index) {
           return Column(
             children: [

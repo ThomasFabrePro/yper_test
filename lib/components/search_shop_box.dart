@@ -3,6 +3,7 @@ import 'package:yper_test/constants.dart';
 import 'package:yper_test/theme/app_theme.dart';
 import 'package:yper_test/providers/location_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:searchfield/searchfield.dart';
 
 class SearchShopBox extends StatelessWidget {
   const SearchShopBox({super.key});
@@ -12,7 +13,7 @@ class SearchShopBox extends StatelessWidget {
     return Consumer<LocationProvider>(
       builder: (context, locationProvider, child) {
         return Container(
-      height: 225,
+      height: 225,  
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
         color: AppTheme.mainColor,
@@ -30,22 +31,43 @@ class SearchShopBox extends StatelessWidget {
                 color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
-          Form(
-            child: TextFormField(
-              onChanged: (value) {
+          SearchField(
+              suggestions : locationProvider.predictionsTitles.map((e) => SearchFieldListItem(e,
+                child:  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:16.0),
+                      child: Text(e,
+                        style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+                      ),
+                      ),
+                    ),
+                  ),).toList(),
+              onSearchTextChanged: (value) {
                 locationProvider.placeAutoComplete(value);
+                return null;
               },
+              suggestionsDecoration:  SuggestionDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(5)),
+              ),
+              marginColor: Colors.transparent,
+              maxSuggestionsInViewPort :5,
+              onSuggestionTap:(value){
+                print("🔵 suggestion tap");},
               textInputAction: TextInputAction.search,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w200),
-              decoration: InputDecoration(
-                hintText: "Ex : 59000 Lille",
+              searchStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w200),
+              searchInputDecoration: InputDecoration(
+                hintText: "Ex : 59000, Lille",
                 hintStyle: const TextStyle(
                   color: Colors.white54,
                   fontSize: 20,
                 ),
+                contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
                 fillColor: Colors.transparent,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -58,7 +80,6 @@ class SearchShopBox extends StatelessWidget {
                   borderSide: BorderSide(width: 1, color: Colors.white54),
                 ),
               ),
-            ),
           ),
         ],
       ),
