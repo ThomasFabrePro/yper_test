@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:yper_test/models/shop.dart';
 import 'package:yper_test/providers/location_provider.dart';
+import 'package:yper_test/screens/home_screen.dart';
+import 'package:yper_test/screens/shop_details_screen.dart';
 import 'package:yper_test/theme/app_theme.dart';
 
 class LocationListTile extends StatelessWidget {
@@ -30,27 +33,34 @@ class LocationListTile extends StatelessWidget {
                   itemCount: locationProvider.nearestYperShops.length,
                   itemBuilder: (context, index) {
                     Shop shop = locationProvider.nearestYperShops[index];
-                    return Column(
-                      children: [
-                        ListTile(
-                          minVerticalPadding: 0,
-                          contentPadding: const EdgeInsets.all(0),
-                          title: Text(
-                            shop.name,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                    return GestureDetector(
+                      onTap: () {
+                        context.go(
+                            '/${HomeScreen.routeName}/${ShopDetailsScreen.routeName}',
+                            extra: shop);
+                      },
+                      child: Column(
+                        children: [
+                          ListTile(
+                            minVerticalPadding: 0,
+                            contentPadding: const EdgeInsets.all(0),
+                            title: Text(
+                              shop.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            subtitle: Text(
+                              shop.fullAddress,
+                              style: const TextStyle(
+                                fontSize: 16,
+                              ),
                             ),
                           ),
-                          subtitle: Text(
-                            shop.fullAddress,
-                            style: const TextStyle(
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        const Divider()
-                      ],
+                          const Divider()
+                        ],
+                      ),
                     );
                   }),
             ),

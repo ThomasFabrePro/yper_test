@@ -43,10 +43,15 @@ class LocationRepository {
 
   Future<Map<String, dynamic>> getNearestYperShops(
       {required double lat, required double lng}) async {
+    int maximumShopsReturned = 30;
+    int maximumRadiusInMeters = 30000;
     Map<String, dynamic> data = {};
     try {
-      Uri uri = Uri.https("io.beta.yper.org", "retailpoint/search",
-          {"location": "$lat,$lng", "limit": "30"});
+      Uri uri = Uri.https("io.beta.yper.org", "retailpoint/search", {
+        "location": "$lat,$lng",
+        "limit": "$maximumShopsReturned",
+        "max_distance": "$maximumRadiusInMeters"
+      });
       var response = await http.get(uri, headers: {
         "Authorization": yperApiToken,
         "X-Request-Timestamp": "${DateTime.now().millisecondsSinceEpoch}",
