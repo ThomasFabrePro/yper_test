@@ -14,13 +14,6 @@ class LocationProvider extends ChangeNotifier {
     }
     return predictionsTitle;
   }
-  // int _locationId = 0;
-  // int get locationId => _locationId;
-
-  // void setLocationId(int locationId) {
-  //   _locationId = locationId;
-  //   notifyListeners();
-  // }
 
   void placeAutoComplete(String query) async {
     Uri uri =
@@ -30,7 +23,7 @@ class LocationProvider extends ChangeNotifier {
       //!ajouter une locationrestriction pour récupérer les résultats uniquement en France
     });
     Map<String, dynamic> predictedLocations =
-        await _locationRepository.fetchLocations(uri);
+        await _locationRepository.getLocations(uri);
     if (predictedLocations.isNotEmpty) {
       predictions = [];
       for (var prediction in predictedLocations['predictions']) {
@@ -38,5 +31,13 @@ class LocationProvider extends ChangeNotifier {
       }
       notifyListeners();
     }
+  }
+
+  Future<(double, double)> retrieveCoordinates(String placeName) async {
+    String placeId =
+        predictions.firstWhere((element) => element.title == placeName).placeId;
+    (double lat, double lng) coordinates =
+        await _locationRepository.getLocationCoordinatesFromPlaceId(placeId);
+    return coordinates;
   }
 }

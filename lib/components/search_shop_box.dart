@@ -13,7 +13,7 @@ class SearchShopBox extends StatelessWidget {
     return Consumer<LocationProvider>(
       builder: (context, locationProvider, child) {
         return Container(
-      height: 225,  
+      height: 200,  
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
         color: AppTheme.mainColor,
@@ -32,7 +32,7 @@ class SearchShopBox extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           SearchField(
-              suggestions : locationProvider.predictionsTitles.map((e) => SearchFieldListItem(e,
+              suggestions : locationProvider.predictionsTitles.map((e) => SearchFieldListItem<String>(e,
                 child:  Padding(
                     padding: const EdgeInsets.symmetric(horizontal:16.0),
                       child: Text(e,
@@ -47,13 +47,14 @@ class SearchShopBox extends StatelessWidget {
                 locationProvider.placeAutoComplete(value);
                 return null;
               },
+              
               suggestionsDecoration:  SuggestionDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
               ),
               marginColor: Colors.transparent,
               maxSuggestionsInViewPort :5,
               onSuggestionTap:(value){
-                print("🔵 suggestion tap");},
+                locationProvider.retrieveCoordinates(value.searchKey);},
               textInputAction: TextInputAction.search,
               searchStyle: const TextStyle(
                 color: Colors.white,
