@@ -7,8 +7,8 @@ import 'package:yper_test/web_service/repositories/location_repository.dart';
 class LocationProvider extends ChangeNotifier {
   //?potentielle inversion de dépendance avec le répo si évolution de l'app
   final LocationRepository _locationRepository = LocationRepository();
-  List<LocationSearchIitem> predictions = [];
-  List<Shop> nearestYperShops = [];
+  List<LocationSearchIitem> predictions = <LocationSearchIitem>[];
+  List<Shop> nearestYperShops = <Shop>[];
 
   List<String> get predictionsTitles {
     List<String> predictionsTitle = [];
@@ -28,7 +28,7 @@ class LocationProvider extends ChangeNotifier {
     Map<String, dynamic> predictedLocations =
         await _locationRepository.getLocations(uri);
     if (predictedLocations.isNotEmpty) {
-      predictions = [];
+      predictions = <LocationSearchIitem>[];
       for (var prediction in predictedLocations['predictions']) {
         predictions.add(LocationSearchIitem.fromJson(prediction));
       }
@@ -54,7 +54,7 @@ class LocationProvider extends ChangeNotifier {
     //Remplissage de la liste de magasins
     _fillShopsList(yperShops);
     //Netoyage de la liste des prédictions pour supprimer son affichage
-    predictions = [];
+    predictions = <LocationSearchIitem>[];
     notifyListeners();
   }
 

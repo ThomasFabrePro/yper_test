@@ -43,7 +43,7 @@ class LocationRepository {
 
   Future<Map<String, dynamic>> getNearestYperShops(
       {required double lat, required double lng}) async {
-    int maximumShopsReturned = 30;
+    int maximumShopsReturned = 10;
     int maximumRadiusInMeters = 30000;
     Map<String, dynamic> data = {};
     try {

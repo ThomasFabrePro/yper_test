@@ -51,8 +51,7 @@ class Shop {
       city: json["address"]['city'],
       street: json["address"]['street'],
       zip: json["address"]['zip'],
-      publicPhone:
-          json['phone']['public'] ?? 'Aucun numéro de téléphone disponible',
+      publicPhone: json['phone']['public'] ?? 'Aucun téléphone',
       deliveryHours: deliveryHours,
     );
   }

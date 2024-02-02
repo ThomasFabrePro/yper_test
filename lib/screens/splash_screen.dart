@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:yper_test/constants.dart';
 import 'package:yper_test/screens/home_screen.dart';
-import 'package:yper_test/theme/app_theme.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = "SplashScreen";
@@ -68,11 +68,11 @@ class WaitingSplash extends StatelessWidget {
               style: TextStyle(
                 fontSize: 56,
                 fontWeight: FontWeight.bold,
-                color: AppTheme.mainColor,
+                color: mainColor,
               ),
             ),
             CircularProgressIndicator(
-              color: AppTheme.mainColor,
+              color: mainColor,
             )
           ],
         ),
@@ -94,7 +94,7 @@ class ErrorSplash extends StatelessWidget {
           style: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.bold,
-            color: AppTheme.mainColor,
+            color: mainColor,
           ),
         ),
       ),

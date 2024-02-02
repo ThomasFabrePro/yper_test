@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:yper_test/constants.dart';
 import 'package:yper_test/models/shop.dart';
 import 'package:yper_test/screens/home_screen.dart';
 import 'package:yper_test/screens/shop_details_screen.dart';
@@ -40,6 +41,9 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Rubik',
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: black87),
+        ),
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: Colors.white,
         ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:yper_test/constants.dart';
 import 'package:yper_test/models/shop.dart';
 import 'package:yper_test/providers/location_provider.dart';
 import 'package:yper_test/screens/home_screen.dart';
 import 'package:yper_test/screens/shop_details_screen.dart';
-import 'package:yper_test/theme/app_theme.dart';
 
 class LocationListTile extends StatelessWidget {
   const LocationListTile({super.key});
@@ -23,7 +23,7 @@ class LocationListTile extends StatelessWidget {
                 ? const Text("LE PLUS PROCHE",
                     style: TextStyle(
                       letterSpacing: 1.5,
-                      color: AppTheme.mainColor,
+                      color: mainColor,
                       fontSize: 10,
                       fontWeight: FontWeight.bold,
                     ))

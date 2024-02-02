@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yper_test/constants.dart';
-import 'package:yper_test/theme/app_theme.dart';
 import 'package:yper_test/providers/location_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:searchfield/searchfield.dart';
@@ -16,7 +15,7 @@ class SearchShopBox extends StatelessWidget {
       height: 200,  
       padding: const EdgeInsets.all(defaultPadding),
       decoration: const BoxDecoration(
-        color: AppTheme.mainColor,
+        color: mainColor,
         borderRadius: BorderRadius.only(
           bottomRight: Radius.circular(70),
         ),

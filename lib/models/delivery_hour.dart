@@ -28,6 +28,23 @@ class DeliveryHour {
     return "$start - $end";
   }
 
+  bool isOpenNow(DateTime now) {
+    //!Bonus
+    if (isClosed) return false;
+    //!triche : besoin de refacto les dates car elles elles sont mauvaises sur l'api
+    String nowToString = now.toString();
+    String refactoredOpenTime =
+        nowToString.substring(0, 11) + open.substring(11, 16);
+    String refactoredCloseTime =
+        nowToString.substring(0, 11) + close.substring(11, 16);
+    DateTime openTime = DateTime.parse(refactoredOpenTime);
+    DateTime closeTime = DateTime.parse(refactoredCloseTime);
+    if (now.isAfter(openTime) && now.isBefore(closeTime)) {
+      return true;
+    }
+    return false;
+  }
+
   String get dayName {
     switch (day) {
       case 1:
