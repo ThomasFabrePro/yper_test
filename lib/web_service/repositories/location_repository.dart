@@ -40,4 +40,23 @@ class LocationRepository {
     debugPrint("TESTA lat: $lat, lng: $lng");
     return (lat, lng);
   }
+
+  Future<Map<String, dynamic>> getNearestYperShops(
+      {required double lat, required double lng}) async {
+    Map<String, dynamic> data = {};
+    try {
+      Uri uri = Uri.https("io.beta.yper.org", "retailpoint/search",
+          {"location": "$lat,$lng", "limit": "30"});
+      var response = await http.get(uri, headers: {
+        "Authorization": yperApiToken,
+        "X-Request-Timestamp": "${DateTime.now().millisecondsSinceEpoch}",
+      });
+      if (response.statusCode == 200) {
+        data = jsonDecode(response.body);
+      }
+    } catch (e) {
+      debugPrint("$e");
+    }
+    return data;
+  }
 }

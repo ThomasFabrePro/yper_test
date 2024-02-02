@@ -54,7 +54,10 @@ class SearchShopBox extends StatelessWidget {
               marginColor: Colors.transparent,
               maxSuggestionsInViewPort :5,
               onSuggestionTap:(value){
-                locationProvider.retrieveCoordinates(value.searchKey);},
+                locationProvider.fetchNearestYperShops(value.searchKey);
+                //dismiss keyboard
+                FocusScope.of(context).unfocus();
+                },
               textInputAction: TextInputAction.search,
               searchStyle: const TextStyle(
                 color: Colors.white,
