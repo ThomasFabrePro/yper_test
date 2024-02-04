@@ -12,8 +12,12 @@ class DeliveryHour {
   });
 
   factory DeliveryHour.fromJson(Map<String, dynamic> json) {
+    //conversion pour les jours retournés en type double (arrive quand on cherche un code postal)
+    int day =
+        json['day'] is int ? json['day'] : int.tryParse("${json['day']}") ?? 1;
+
     return DeliveryHour(
-      day: json['day'],
+      day: day,
       open: json["hours"]['start'],
       close: json["hours"]['end'],
     );

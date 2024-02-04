@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart' show debugPrint;
 import 'package:http/http.dart' as http;
 import 'package:yper_test/constants.dart';
 
@@ -11,9 +10,11 @@ class LocationRepository {
       var response = await http.get(uri, headers: headers);
       if (response.statusCode == 200) {
         data = jsonDecode(response.body);
+        return data;
       }
     } catch (e) {
-      debugPrint("$e");
+      throw Exception(
+          'Erreur lors de la requête de récupération des prédictions : $e');
     }
     return data;
   }
@@ -33,9 +34,11 @@ class LocationRepository {
         var data = jsonDecode(response.body);
         lat = data['result']['geometry']['location']['lat'];
         lng = data['result']['geometry']['location']['lng'];
+        return (lat, lng);
       }
     } catch (e) {
-      debugPrint("$e");
+      throw Exception(
+          'Erreur lors de la requête de récupération des coordonnées : $e');
     }
     return (lat, lng);
   }
@@ -57,9 +60,11 @@ class LocationRepository {
       });
       if (response.statusCode == 200) {
         data = jsonDecode(response.body);
+        return data;
       }
     } catch (e) {
-      debugPrint("$e");
+      throw Exception(
+          'Erreur lors de la requête de récupération des magasins proches : $e');
     }
     return data;
   }
