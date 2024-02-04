@@ -9,6 +9,8 @@ class Shop {
   String street;
   String zip;
   String publicPhone;
+  double latitude;
+  double longitude;
 
   List<DeliveryHour> deliveryHours;
 
@@ -21,6 +23,8 @@ class Shop {
     required this.zip,
     required this.publicPhone,
     required this.deliveryHours,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory Shop.fromJson(Map<String, dynamic> json) {
@@ -53,6 +57,8 @@ class Shop {
       zip: json["address"]['zip'],
       publicPhone: json['phone']['public'] ?? 'Aucun téléphone',
       deliveryHours: deliveryHours,
+      latitude: json['address']['location']['coordinates'][1],
+      longitude: json['address']['location']['coordinates'][0],
     );
   }
 }

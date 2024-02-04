@@ -37,7 +37,6 @@ class LocationRepository {
     } catch (e) {
       debugPrint("$e");
     }
-    debugPrint("TESTA lat: $lat, lng: $lng");
     return (lat, lng);
   }
 
