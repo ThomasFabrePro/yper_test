@@ -23,6 +23,7 @@ class LocationProvider extends ChangeNotifier {
         Uri.https('maps.googleapis.com', 'maps/api/place/autocomplete/json', {
       'input': query,
       'key': googleAutoCompleteApiKey,
+      'components': 'country:fr',
       //!ajouter une locationrestriction pour récupérer les résultats uniquement en France
     });
     Map<String, dynamic> predictedLocations =
