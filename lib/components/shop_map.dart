@@ -21,11 +21,11 @@ class _ShopMapState extends State<ShopMap> {
 
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
+  //Offset pour décaler la caméra pour que le marqueur soit bien visible
   final double cameraLatOffSet = -0.003500;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // constraints: const BoxConstraints(maxHeight: 600),
       child: GoogleMap(
           mapType: MapType.normal,
           initialCameraPosition: CameraPosition(

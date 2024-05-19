@@ -21,7 +21,7 @@ GoRouter router() {
           GoRoute(
             path: ShopDetailsScreen.routeName,
             builder: (context, state) {
-              final shop = state.extra as Shop;
+              final Shop shop = state.extra as Shop;
               return ShopDetailsScreen(shop: shop);
             },
           ),

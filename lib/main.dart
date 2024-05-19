@@ -1,8 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show runApp, WidgetsFlutterBinding;
 import 'package:yper_test/app.dart';
+// ignore: depend_on_referenced_packages
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+// ignore: depend_on_referenced_packages
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 
 void main() async {

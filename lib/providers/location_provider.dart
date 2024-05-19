@@ -24,7 +24,6 @@ class LocationProvider extends ChangeNotifier {
       'input': query,
       'key': googleAutoCompleteApiKey,
       'components': 'country:fr',
-      //!ajouter une locationrestriction pour récupérer les résultats uniquement en France
     });
     Map<String, dynamic> predictedLocations =
         await _locationRepository.getLocations(uri);

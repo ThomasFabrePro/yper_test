@@ -1,7 +1,6 @@
 import 'package:yper_test/models/delivery_hour.dart';
 
 class Shop {
-  //?Name non demandé ?
   String name;
 
   //address
@@ -14,7 +13,7 @@ class Shop {
 
   List<DeliveryHour> deliveryHours;
 
-  get fullAddress => "$street, $zip $city";
+  String get fullAddress => "$street, $zip $city";
 
   Shop({
     required this.name,
@@ -40,6 +39,7 @@ class Shop {
       for (var i = 1; i < 8; i++) {
         if (deliveryHours.indexWhere((element) => element.day == i) == -1) {
           deliveryHours.add(
+            //Ajout d'un jour fermé
             DeliveryHour(
               day: i,
               open: "00:00:00",
